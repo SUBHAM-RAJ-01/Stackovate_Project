@@ -23,7 +23,7 @@ const Footer = () => {
           <div className="footer-col">
             <h4 className="footer-title gradient-text">Contact</h4>
             <ul className="footer-links">
-              <li>Email: hello@aquabite.app</li>
+              <li>Email: subhamraj.work@yahoo.com</li>
               <li>Support: support@aquabite.app</li>
             </ul>
           </div>
@@ -33,7 +33,7 @@ const Footer = () => {
               <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook"><FiFacebook /></a>
               <a href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter"><FiTwitter /></a>
               <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"><FiInstagram /></a>
-              <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub"><FiGithub /></a>
+              <a href="https://github.com/SUBHAM-RAJ-01/Stackovate_Project" target="_blank" rel="noreferrer" aria-label="GitHub"><FiGithub /></a>
             </div>
           </div>
         </div>
