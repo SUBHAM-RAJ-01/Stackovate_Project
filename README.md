@@ -33,9 +33,11 @@ The goal is to provide a simple UX with a clean visual style featuring teal/cyan
 
 ## Screenshots
 
-   <img width="534" height="873" alt="Screenshot 2025-08-15 232840" src="https://github.com/user-attachments/assets/853fa53c-0b6b-4202-b5fa-0396d6545325" />
-
-   <img width="532" height="866" alt="image" src="https://github.com/user-attachments/assets/80454ebc-5bc8-4994-b013-28e45bb76669" />
+   <div style="display: flex; gap: 10px;">
+   <img width="300" height="500" alt="Screenshot 2025-08-15 232840" src="https://github.com/user-attachments/assets/853fa53c-0b6b-4202-b5fa-0396d6545325" />
+   <img width="365" height="759" alt="image" src="https://github.com/user-attachments/assets/df9a1d51-aa89-4ac2-b19b-4cb2ee09d05d" />
+   <img width="300" height="500" alt="image" src="https://github.com/user-attachments/assets/80454ebc-5bc8-4994-b013-28e45bb76669" />
+   </div>
 
 ## ✨ Features
 
