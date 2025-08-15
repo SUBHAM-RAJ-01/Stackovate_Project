@@ -74,6 +74,18 @@ The goal is to provide a simple UX with a clean visual style featuring teal/cyan
 
 ---
 
+## 🔔 What's New
+
+- **Sorting options**: Sort results by Name (A–Z/Z–A) or Category (A–Z/Z–A)
+- **Contextual sort visibility**: Sort controls appear only after search/suggestion results
+- **Random suggestion**: “Suggest me a recipe” button (theme-matched) to fetch random recipes
+- **Paging shimmer**: Quick skeleton shimmer when changing pages
+- **Remember page per query**: Restores your last viewed page for the same query
+- **Back to Top**: Floating button to quickly return to top
+- **API utility**: `fetchRandomRecipes(count)` added in `src/utils/api.js`
+
+---
+
 ## 🛠️ Tech Stack
 
 <div align="center">
