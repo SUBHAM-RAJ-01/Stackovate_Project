@@ -10,7 +10,7 @@
 
 *Built as a beginner-friendly project to practice React, API integration, and responsive UI.*
 
-[🚀 Demo](#getting-started) • [📖 Documentation](#features) • [🤝 Contributing](#contributing)
+[🚀 Demo][(https://findmyfoodstack.netlify.app/)]
 
 </div>
 
