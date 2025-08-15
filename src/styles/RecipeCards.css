@@ -58,3 +58,11 @@
   letter-spacing: 0.2px;
 }
 .recipe-card:hover .card-overlay span { text-decoration: underline; }
+
+/* Small screens */
+@media (max-width: 440px) {
+  .card-image { height: 180px; }
+  .card-content { padding: 12px; }
+  .card-title { font-size: 16px; }
+  .card-meta { flex-wrap: wrap; gap: 10px; font-size: 13px; }
+}

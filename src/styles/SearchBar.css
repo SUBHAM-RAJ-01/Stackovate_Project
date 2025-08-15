@@ -23,6 +23,27 @@
   margin: 0 auto;
 }
 
+/* Small screens: keep button beside input and let input flex */
+@media (max-width: 440px) {
+  .search-wrapper {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+  .search-input-container {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 0;
+    border-radius: 16px;
+  }
+  .search-button {
+    width: 44px;
+    height: 44px;
+    padding: 12px;
+    flex: 0 0 auto;
+  }
+}
+
 .search-input {
   width: 100%;
   padding: 16px 20px;

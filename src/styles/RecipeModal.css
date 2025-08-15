@@ -79,3 +79,18 @@
 
 .video-section { grid-column: 1 / -1; }
 .video-link { color: var(--primary-2); font-weight: 600; }
+
+/* Small screens */
+@media (max-width: 440px) {
+  .modal-content { width: 96%; border-radius: 14px; }
+  .modal-header { padding-top: 14px; }
+  .modal-image { width: 100%; max-width: 280px; }
+  .modal-info { padding: 16px 16px 8px; }
+  .modal-title { font-size: 20px; }
+  .modal-meta { gap: 6px; }
+  .favorite-btn-modal { width: 36px; height: 36px; }
+  .modal-stats { gap: 10px; }
+  .modal-body { padding: 16px; gap: 16px; }
+  .ingredients-list { grid-template-columns: 1fr; }
+  .modal-close { right: 12px; top: 12px; }
+}

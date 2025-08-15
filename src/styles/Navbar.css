@@ -39,3 +39,11 @@
 .nav-item:hover { transform: translateY(-2px); box-shadow: var(--card-shadow); }
 .nav-item.active { background: linear-gradient(90deg, var(--primary), var(--primary-2)); color: white; box-shadow: 0 8px 24px var(--glow); }
 .theme-toggle { padding: 10px; }
+
+/* Small screens */
+@media (max-width: 440px) {
+  .nav-container { width: 94%; }
+  .nav-menu { flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+  .nav-item { padding: 8px 10px; border-radius: 10px; }
+  .logo-text { font-size: 14px; }
+}
