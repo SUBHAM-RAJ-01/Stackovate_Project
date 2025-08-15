@@ -1,0 +1,94 @@
+/* Filter dropdown with glassmorphism */
+.filter-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.filter-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.filter-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--card-shadow);
+}
+
+.filter-icon {
+  font-size: 16px;
+  color: var(--primary);
+}
+
+.chevron-icon {
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+
+.chevron-icon.open {
+  transform: rotate(180deg);
+}
+
+.filter-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  min-width: 160px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.8));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  z-index: 100;
+  padding: 6px;
+}
+
+.app.dark-mode .filter-menu {
+  background: linear-gradient(180deg, rgba(10,18,22,0.95), rgba(10,18,22,0.8));
+  border-color: rgba(255,255,255,0.2);
+}
+
+.filter-option {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-size: 14px;
+}
+
+.filter-option:hover {
+  background: rgba(124, 227, 255, 0.15);
+}
+
+.filter-option.active {
+  background: linear-gradient(90deg, var(--primary), var(--primary-2));
+  color: white;
+}
+
+/* Dark mode improvements */
+.app.dark-mode .filter-toggle {
+  border-color: rgba(255,255,255,0.2);
+}
+
+.app.dark-mode .filter-icon,
+.app.dark-mode .chevron-icon {
+  color: rgba(255,255,255,0.9);
+}

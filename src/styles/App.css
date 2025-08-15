@@ -1,0 +1,53 @@
+/* App layout and common sections */
+.app { transition: background 0.4s ease, color 0.3s ease; }
+
+/* New search and filter layout */
+.search-filter-section {
+  width: min(1100px, 95%);
+  margin: 0 auto;
+  padding: 28px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .search-filter-section {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* Make SearchBar wide and centered */
+.search-filter-section .search-container {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .search-filter-section .search-container { max-width: 100%; }
+}
+
+/* Sections spacing */
+section { padding: 20px 0; }
+@media (min-width: 768px) { section { padding: 28px 0; } }
+
+/* Dark mode improvements */
+.app.dark-mode {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* Ensure all borders are white in dark mode */
+.app.dark-mode * {
+  border-color: rgba(255,255,255,0.2) !important;
+}
+
+/* Ensure all icons are white in dark mode */
+.app.dark-mode svg {
+  color: rgba(255,255,255,0.9) !important;
+}

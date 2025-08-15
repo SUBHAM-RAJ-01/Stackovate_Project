@@ -1,0 +1,41 @@
+/* Glassy navbar with gradient accents */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 12px 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2));
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+}
+.app.dark-mode .navbar { background: linear-gradient(180deg, rgba(10,18,22,0.85), rgba(10,18,22,0.4)); }
+
+.nav-container {
+  width: min(1200px, 92%);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo { display: flex; align-items: center; gap: 10px; color: var(--text); }
+.logo-icon { font-size: 22px; color: var(--primary); filter: drop-shadow(0 4px 8px var(--glow)); }
+.logo-text { font-weight: 800; letter-spacing: 0.2px; }
+
+.nav-menu { display: flex; align-items: center; gap: 10px; color: var(--text); }
+.nav-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.nav-item:hover { transform: translateY(-2px); box-shadow: var(--card-shadow); }
+.nav-item.active { background: linear-gradient(90deg, var(--primary), var(--primary-2)); color: white; box-shadow: 0 8px 24px var(--glow); }
+.theme-toggle { padding: 10px; }

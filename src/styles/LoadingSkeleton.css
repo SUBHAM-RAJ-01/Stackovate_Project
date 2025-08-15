@@ -1,0 +1,19 @@
+/* Shimmer skeleton loaders */
+.loading-container { width: min(1200px, 94%); margin-inline: auto; }
+.loading-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 16px; }
+@media (min-width: 640px) { .loading-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 992px) { .loading-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.skeleton-card { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: rgba(255,255,255,0.55); box-shadow: var(--card-shadow); }
+.skeleton-image { height: 220px; }
+.skeleton-content { padding: 14px; display: grid; gap: 10px; }
+.skeleton-title { height: 16px; width: 70%; border-radius: 8px; }
+.skeleton-meta { display: flex; gap: 10px; }
+.skeleton-meta-item { height: 12px; width: 30%; border-radius: 6px; }
+.skeleton-category { height: 12px; width: 40%; border-radius: 6px; }
+
+.shimmer {
+  background: linear-gradient(90deg, rgba(200,220,228,0.25) 25%, rgba(255,255,255,0.7) 37%, rgba(200,220,228,0.25) 63%);
+  background-size: 800px 100%;
+  animation: shimmer 1.6s infinite linear;
+}

@@ -1,0 +1,46 @@
+/* Hero section with background image and gradient overlay */
+.hero {
+  position: relative;
+  min-height: 52vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1600&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.05) contrast(1.05) brightness(0.95);
+  transform: scale(1.02);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.50) 0%, rgba(0,0,0,1.25) 30%, rgba(255,255,255,0.0) 100%),
+              linear-gradient(90deg, rgba(14,197,161,0.18), rgba(8,165,194,0.18));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+  padding: 28px 16px;
+}
+
+.hero-title { font-size: clamp(28px, 5vw, 48px); margin: 0 0 8px; }
+.hero-subtitle { font-size: clamp(14px, 2.5vw, 18px); opacity: 0.95; margin: 0; }
+
+.hero-features { margin-top: 18px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.feature-item { 
+  display: inline-flex; gap: 8px; align-items: center; 
+  padding: 8px 12px; border-radius: 999px; 
+  background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(6px);
+}
+
+.app.dark-mode .hero-overlay { background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.2)); }

@@ -1,0 +1,49 @@
+/* Diet pills with icons */
+.diet-pills {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 12px 0 18px;
+  flex-wrap: wrap;
+}
+
+.diet-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.diet-pill:hover {
+  background: var(--glass-hover);
+  transform: translateY(-1px);
+}
+
+.diet-pill.active {
+  background: linear-gradient(90deg, var(--primary), var(--primary-2));
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 12px var(--glow);
+}
+
+.diet-icon {
+  font-size: 16px;
+}
+
+/* Dark mode adjustments */
+.app.dark-mode .diet-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.app.dark-mode .diet-pill.active {
+  background: linear-gradient(90deg, var(--primary), var(--primary-2));
+}

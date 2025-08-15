@@ -1,0 +1,60 @@
+/* Recipe Cards grid with 3D glassmorphism */
+.recipes-section { padding-top: 10px; }
+.recipes-container { width: min(1200px, 94%); margin-inline: auto; }
+
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 16px;
+}
+@media (min-width: 640px) { .recipes-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 992px) { .recipes-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.recipe-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.4));
+  box-shadow: var(--card-shadow);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+}
+.app.dark-mode .recipe-card { background: linear-gradient(180deg, rgba(10,18,22,0.7), rgba(10,18,22,0.35)); }
+
+.recipe-card:hover { box-shadow: 0 16px 40px var(--glow); }
+
+.card-image-wrapper { position: relative; }
+.card-image { width: 100%; height: 220px; object-fit: cover; display: block; filter: saturate(1.05); }
+
+.favorite-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text);
+}
+.favorite-btn svg { transition: color 0.15s ease, transform 0.15s ease; filter: drop-shadow(0 0 0 rgba(0,0,0,0)); }
+.favorite-btn:hover svg { transform: scale(1.06); }
+.favorite-btn.active svg { color: #e02424; }
+
+.card-content { padding: 14px; }
+.card-title { margin: 0 0 8px; font-size: 18px; }
+.card-meta { display: flex; gap: 14px; color: var(--muted); font-size: 14px; }
+.meta-item { display: inline-flex; align-items: center; gap: 6px; }
+.card-category { margin-top: 10px; font-size: 13px; color: var(--primary-2); font-weight: 600; }
+
+.card-overlay {
+  position: absolute; inset: auto 0 0 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(0,0,0,0.35));
+  color: #fff;
+  padding: 10px 14px;
+  text-align: right;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+.recipe-card:hover .card-overlay span { text-decoration: underline; }

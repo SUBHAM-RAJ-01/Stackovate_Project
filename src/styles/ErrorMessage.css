@@ -1,0 +1,7 @@
+/* Friendly error message with icon and retry */
+.error-container { width: min(900px, 92%); margin-inline: auto; }
+.error-content { text-align: center; padding: 24px 18px; border-radius: 16px; border: 1px solid var(--border); background: rgba(255,255,255,0.6); box-shadow: var(--card-shadow); }
+.error-icon { width: 56px; height: 56px; border-radius: 14px; margin: 0 auto 10px; display: grid; place-items: center; background: rgba(8,165,194,0.12); color: var(--primary-2); font-size: 24px; }
+.error-title { margin: 8px 0 6px; }
+.error-message { margin: 0; color: var(--muted); }
+.retry-button { margin-top: 12px; display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border: none; border-radius: 12px; background: linear-gradient(90deg, var(--primary), var(--primary-2)); color: white; box-shadow: 0 8px 24px var(--glow); cursor: pointer; }

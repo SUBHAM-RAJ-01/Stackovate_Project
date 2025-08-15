@@ -1,0 +1,116 @@
+/* Search bar with round design and external icon */
+.search-section { padding-top: 16px; }
+.search-container { width: min(900px, 92%); margin-inline: auto; }
+
+.search-form { width: 100%; }
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+.search-input-container {
+  flex: 0 0 500px;
+  position: relative;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.search-input::placeholder {
+  color: var(--muted);
+}
+
+.search-button {
+  padding: 16px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(90deg, var(--primary), var(--primary-2));
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 8px 24px var(--glow);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-button:hover { transform: translateY(-2px); }
+
+.search-icon {
+  font-size: 18px;
+  color: white;
+}
+
+.search-suggestions { margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; color: var(--muted); }
+.suggestion-chip {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.6);
+  color: var(--text);
+  cursor: pointer;
+}
+.suggestion-chip:hover { background: rgba(255,255,255,0.85); box-shadow: var(--card-shadow); }
+
+/* Live suggestions dropdown */
+.suggestions-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.8));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--card-shadow);
+  z-index: 10;
+}
+.app.dark-mode .suggestions-dropdown { 
+  background: linear-gradient(180deg, rgba(10,18,22,0.95), rgba(10,18,22,0.8));
+  border-color: rgba(255,255,255,0.2);
+}
+
+.suggestion-row {
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.suggestion-row:hover, .suggestion-row.active {
+  background: rgba(124, 227, 255, 0.18);
+}
+
+/* Dark mode improvements */
+.app.dark-mode .search-input-container {
+  border-color: rgba(255,255,255,0.2);
+}
+
+.app.dark-mode .search-input {
+  color: rgba(255,255,255,0.9);
+}
+
+.app.dark-mode .search-input::placeholder {
+  color: rgba(255,255,255,0.5);
+}

@@ -1,0 +1,83 @@
+/* Global resets and base theme */
+:root {
+  --bg: #f5fbff;
+  --surface: rgba(255, 255, 255, 0.6);
+  --text: #0b2d34;
+  --muted: #5a7f86;
+  --primary: #0ec5a1;
+  --primary-2: #08a5c2;
+  --accent: #7ce3ff;
+  --glow: rgba(14, 197, 161, 0.35);
+  --card-shadow: 0 10px 30px rgba(15, 92, 109, 0.15);
+  --glass: rgba(255, 255, 255, 0.4);
+  --border: rgba(255, 255, 255, 0.35);
+}
+
+/* Dark mode variables */
+.app.dark-mode {
+  --bg: linear-gradient(135deg, #0a1216 0%, #1a2832 100%);
+  --bg-dark: linear-gradient(135deg, #0a1216 0%, #1a2832 100%);
+  --text: rgba(255,255,255,0.95);
+  --text-dark: rgba(255,255,255,0.95);
+  --muted: rgba(255,255,255,0.7);
+  --border: rgba(255,255,255,0.2);
+  --glass: rgba(255,255,255,0.1);
+  --card-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'Nunito', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  color: var(--text);
+  background: linear-gradient(135deg, #e7fbff, #ecfff9);
+  background-attachment: fixed;
+}
+
+.app {
+  min-height: 100vh;
+  background: radial-gradient(1200px 800px at 10% 10%, rgba(126, 227, 255, 0.3), transparent 60%),
+              radial-gradient(1000px 700px at 90% 20%, rgba(14, 197, 161, 0.25), transparent 60%),
+              var(--bg);
+}
+
+.container { width: min(1200px, 92%); margin-inline: auto; }
+
+/* Utilities */
+.gradient-text {
+  background: linear-gradient(90deg, var(--primary), var(--primary-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass {
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  background: var(--glass);
+  border: 1px solid var(--border);
+}
+
+.shadow-3d { box-shadow: var(--card-shadow); }
+.round { border-radius: 16px; }
+
+a { color: inherit; text-decoration: none; }
+
+/* Ensure icons follow current text color */
+svg { color: inherit; }
+
+/* Animations */
+@keyframes shimmer {
+  0% { background-position: -450px 0; }
+  100% { background-position: 450px 0; }
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+/* Responsive helpers */
+:root { --bp-sm: 480px; --bp-md: 768px; --bp-lg: 1024px; }

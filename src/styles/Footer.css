@@ -1,0 +1,17 @@
+/* Footer with multi-column layout and gradient headings */
+.footer { margin-top: 20px; padding: 28px 0 16px; background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2)); border-top: 1px solid var(--border); }
+.app.dark-mode .footer { background: linear-gradient(180deg, rgba(10,18,22,0.7), rgba(10,18,22,0.2)); }
+
+.footer-container { width: min(1200px, 94%); margin-inline: auto; }
+.footer-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 18px; }
+@media (min-width: 768px) { .footer-grid { grid-template-columns: 1.3fr 1fr 1fr 1fr; } }
+
+.footer-title { margin: 0 0 8px; font-size: 16px; }
+.footer-text { margin: 0; color: var(--muted); }
+.footer-links { list-style: none; padding: 0; margin: 6px 0 0; display: grid; gap: 8px; color: var(--muted); }
+.footer-links a:hover { color: var(--primary-2); }
+
+.social-row { display: flex; gap: 10px; }
+.social-row a { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; border: 1px solid var(--border); background: var(--glass); box-shadow: var(--card-shadow); }
+
+.footer-bottom { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; text-align: center; }
