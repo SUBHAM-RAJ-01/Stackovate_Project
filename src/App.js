@@ -9,11 +9,13 @@ import RecipeCards from './components/RecipeCards';
 import RecipeModal from './components/RecipeModal';
 import Favorites from './components/Favorites';
 import Footer from './components/Footer';
+import BackToTop from './components/BackToTop';
 import LoadingSkeleton from './components/LoadingSkeleton';
 import ErrorMessage from './components/ErrorMessage';
 import './styles/DietPills.css';
 import { searchRecipes, getRecipeDetails } from './utils/api';
 import Pagination from './components/Pagination';
+import { FiShuffle } from 'react-icons/fi';
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -29,6 +31,8 @@ function App() {
   const [page, setPage] = useState(1);
   const [favPage, setFavPage] = useState(1);
   const PAGE_SIZE = 6;
+  const [sortBy, setSortBy] = useState('none'); // none | name_asc | name_desc | cat_asc | cat_desc
+  const [isPaging, setIsPaging] = useState(false);
 
   // Load favorites from localStorage on mount
   useEffect(() => {
@@ -52,7 +56,14 @@ function App() {
       setLastQuery(query); // remember last query for retry
       const results = await searchRecipes(query);
       setRecipes(results);
-      setPage(1);
+      // Restore last page for this query if available
+      try {
+        const saved = JSON.parse(localStorage.getItem('pageByQuery') || '{}');
+        const total = results.length;
+        const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+        const savedPage = Math.min(totalPages, Math.max(1, saved[query] || 1));
+        setPage(savedPage);
+      } catch { setPage(1); }
       if (results.length === 0) {
         setError('No recipes found. Try different ingredients!');
       }
@@ -124,6 +135,12 @@ function App() {
     } else if (activeDiet === 'Non-Veg') {
       base = base.filter(r => !isVeg(r));
     }
+    // Sorting
+    const by = (v) => (v || '').toString().toLowerCase();
+    if (sortBy === 'name_asc') base = [...base].sort((a,b) => by(a.strMeal).localeCompare(by(b.strMeal)));
+    if (sortBy === 'name_desc') base = [...base].sort((a,b) => by(b.strMeal).localeCompare(by(a.strMeal)));
+    if (sortBy === 'cat_asc') base = [...base].sort((a,b) => by(a.strCategory).localeCompare(by(b.strCategory)));
+    if (sortBy === 'cat_desc') base = [...base].sort((a,b) => by(b.strCategory).localeCompare(by(a.strCategory)));
     return base;
   })();
 
@@ -135,6 +152,24 @@ function App() {
   // Derived pagination values for recipes
   const totalRecipes = filteredRecipes.length;
   const pagedRecipes = filteredRecipes.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+
+  // Persist page for current query
+  useEffect(() => {
+    if (!lastQuery) return;
+    try {
+      const saved = JSON.parse(localStorage.getItem('pageByQuery') || '{}');
+      saved[lastQuery] = page;
+      localStorage.setItem('pageByQuery', JSON.stringify(saved));
+    } catch {}
+  }, [page, lastQuery]);
+
+  // Paging shimmer on page change
+  useEffect(() => {
+    if (loading) return;
+    setIsPaging(true);
+    const t = setTimeout(() => setIsPaging(false), 180);
+    return () => clearTimeout(t);
+  }, [page]);
 
   // Favorites pagination
   const totalFavorites = favorites.length;
@@ -160,8 +195,25 @@ function App() {
             <SearchBar onSearch={handleSearch} />
           </div>
 
+          {/* Sort controls: only show after search/suggestion results */}
+          {!loading && !error && recipes.length > 0 && (
+            <div className="sort-row" style={{ width: 'min(1200px, 94%)', margin: '6px auto 0', display: 'flex', justifyContent: 'flex-end' }}>
+              <label style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                <span style={{ color: 'var(--muted)', fontSize: 14 }}>Sort</span>
+                <select value={sortBy} onChange={(e) => { setSortBy(e.target.value); setPage(1); }} style={{ borderRadius: 10, padding: '6px 10px', border: '1px solid var(--border)', background: 'white' }}>
+                  <option value="none">Relevance</option>
+                  <option value="name_asc">Name A–Z</option>
+                  <option value="name_desc">Name Z–A</option>
+                  <option value="cat_asc">Category A–Z</option>
+                  <option value="cat_desc">Category Z–A</option>
+                </select>
+              </label>
+            </div>
+          )}
+
           
           {loading && <LoadingSkeleton />}
+          {isPaging && !loading && totalRecipes > 0 && <LoadingSkeleton />}
           {error && <ErrorMessage message={error} onRetry={() => lastQuery && handleSearch(lastQuery)} />}
           {!loading && !error && totalRecipes > 0 && (
             <RecipeCards 
@@ -170,6 +222,27 @@ function App() {
               onToggleFavorite={toggleFavorite}
               isFavorite={isFavorite}
             />
+          )}
+          {/* Empty state with only Random button (round, theme-styled) */}
+          {!loading && !error && recipes.length === 0 && (
+            <div style={{ width: 'min(1200px, 94%)', margin: '14px auto', display: 'flex', justifyContent: 'center' }}>
+              <button
+                onClick={async () => {
+                  setLoading(true);
+                  try {
+                    const { fetchRandomRecipes } = await import('./utils/api');
+                    const randoms = await fetchRandomRecipes(6);
+                    setRecipes(randoms);
+                    setLastQuery('Random');
+                    setPage(1);
+                  } finally { setLoading(false); }
+                }}
+                className="primary-button"
+              >
+                <FiShuffle />
+                Suggest me a recipe
+              </button>
+            </div>
           )}
           {!loading && !error && totalRecipes > 0 && (
             <Pagination
@@ -210,6 +283,7 @@ function App() {
         />
       )}
 
+      <BackToTop />
       <Footer />
     </div>
   );

@@ -1,0 +1,3 @@
+.back-to-top { position: fixed; right: 14px; bottom: 14px; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--border); background: linear-gradient(90deg, var(--primary), var(--primary-2)); color: #fff; box-shadow: 0 10px 28px var(--glow); z-index: 999; }
+.back-to-top:hover { transform: translateY(-2px); }
+.app.dark-mode .back-to-top { background: linear-gradient(90deg, #0EC5A1, #40DFFF); }

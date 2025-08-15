@@ -84,3 +84,17 @@ export const searchByIngredient = async (ingredient) => {
     throw error;
   }
 };
+
+// Get random recipes (TheMealDB returns 1 per call). We'll call multiple times.
+export const fetchRandomRecipes = async (count = 6) => {
+  const results = [];
+  for (let i = 0; i < count; i++) {
+    try {
+      const data = await fetchWithFallback(`${API_BASE_URL}/random.php`);
+      if (data?.meals?.[0]) results.push(data.meals[0]);
+    } catch (e) {
+      // skip this one, continue
+    }
+  }
+  return results;
+};

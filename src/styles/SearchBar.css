@@ -138,3 +138,19 @@
 .app.dark-mode .search-input::placeholder {
   color: rgba(255,255,255,0.5);
 }
+
+/* Reusable primary CTA with same theme as search-button but for text content */
+.primary-button {
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(90deg, var(--primary), var(--primary-2));
+  color: #fff;
+  box-shadow: 0 8px 24px var(--glow);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.primary-button:hover { transform: translateY(-2px); }
