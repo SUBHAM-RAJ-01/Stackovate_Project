@@ -4,7 +4,6 @@
 
 ![Recipe Finder](https://img.shields.io/badge/Recipe-Finder-teal?style=for-the-badge&logo=react&logoColor=white)
 ![Version](https://img.shields.io/badge/version-1.0.0-brightgreen?style=for-the-badge)
-![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)
 ![Build Status](https://img.shields.io/badge/build-passing-success?style=for-the-badge)
 
 **A clean and modern web app to search for recipes, view detailed instructions, and save favorites.**
