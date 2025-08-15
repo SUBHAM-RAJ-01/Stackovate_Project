@@ -1,5 +1,6 @@
 import React from 'react';
 import { FiHeart, FiClock, FiUsers } from 'react-icons/fi';
+import { FaHeart } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import '../styles/RecipeCards.css';
 
@@ -31,7 +32,7 @@ const RecipeCards = ({ recipes, onRecipeClick, onToggleFavorite, isFavorite }) =
                     onToggleFavorite(recipe);
                   }}
                 >
-                  <FiHeart />
+                  {isFavorite(recipe.idMeal) ? <FaHeart /> : <FiHeart />}
                 </button>
               </div>
               

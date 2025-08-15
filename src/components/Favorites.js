@@ -1,5 +1,6 @@
 import React from 'react';
 import { FiHeart, FiClock, FiUsers } from 'react-icons/fi';
+import { FaHeart } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import '../styles/Favorites.css';
 
@@ -49,13 +50,13 @@ const Favorites = ({ favorites, onRecipeClick, onToggleFavorite, isFavorite }) =
                   className="card-image"
                 />
                 <button
-                  className="remove-favorite-btn"
+                  className="remove-favorite-btn active"
                   onClick={(e) => {
                     e.stopPropagation();
                     onToggleFavorite(recipe);
                   }}
                 >
-                  <FiHeart />
+                  <FaHeart />
                 </button>
               </div>
               
