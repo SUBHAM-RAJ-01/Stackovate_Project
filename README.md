@@ -129,8 +129,8 @@ Make sure you have the following installed:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/recipe-finder.git
-   cd recipe-finder
+   git clone https://github.com/SUBHAM-RAJ-01/Stackovate_Project
+   cd stackovate
    ```
 
 2. **Install dependencies**
