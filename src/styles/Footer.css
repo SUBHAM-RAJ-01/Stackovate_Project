@@ -1,5 +1,5 @@
 /* Footer with multi-column layout and gradient headings */
-.footer { margin-top: 20px; padding: 28px 0 16px; background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2)); border-top: 1px solid var(--border); }
+.footer { margin-top: 20px; padding: 28px 0 16px; background: linear-gradient(180deg, #ffffff, #f6fafc); border-top: 1px solid rgba(15, 92, 109, 0.08); }
 .app.dark-mode .footer { background: linear-gradient(180deg, rgba(10,18,22,0.7), rgba(10,18,22,0.2)); }
 
 .footer-container { width: min(1200px, 94%); margin-inline: auto; }

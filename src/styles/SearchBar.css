@@ -126,6 +126,9 @@
 /* Dark mode improvements */
 .app.dark-mode .search-input-container {
   border-color: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
 }
 
 .app.dark-mode .search-input {
