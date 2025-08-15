@@ -13,6 +13,7 @@ import LoadingSkeleton from './components/LoadingSkeleton';
 import ErrorMessage from './components/ErrorMessage';
 import './styles/DietPills.css';
 import { searchRecipes, getRecipeDetails } from './utils/api';
+import Pagination from './components/Pagination';
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -25,6 +26,9 @@ function App() {
   const [activeDiet, setActiveDiet] = useState('All'); // Veg / Non-Veg
   const [showFavorites, setShowFavorites] = useState(false);
   const [lastQuery, setLastQuery] = useState('');
+  const [page, setPage] = useState(1);
+  const [favPage, setFavPage] = useState(1);
+  const PAGE_SIZE = 6;
 
   // Load favorites from localStorage on mount
   useEffect(() => {
@@ -48,6 +52,7 @@ function App() {
       setLastQuery(query); // remember last query for retry
       const results = await searchRecipes(query);
       setRecipes(results);
+      setPage(1);
       if (results.length === 0) {
         setError('No recipes found. Try different ingredients!');
       }
@@ -122,6 +127,20 @@ function App() {
     return base;
   })();
 
+  // Reset page when filters change
+  useEffect(() => {
+    setPage(1);
+  }, [activeFilter, activeDiet]);
+
+  // Derived pagination values for recipes
+  const totalRecipes = filteredRecipes.length;
+  const pagedRecipes = filteredRecipes.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+
+  // Favorites pagination
+  const totalFavorites = favorites.length;
+  const pagedFavorites = favorites.slice((favPage - 1) * PAGE_SIZE, favPage * PAGE_SIZE);
+  useEffect(() => { setFavPage(1); }, [showFavorites]);
+
   return (
     <div className={`app ${darkMode ? 'dark-mode' : ''}`}>
       <Navbar 
@@ -144,12 +163,20 @@ function App() {
           
           {loading && <LoadingSkeleton />}
           {error && <ErrorMessage message={error} onRetry={() => lastQuery && handleSearch(lastQuery)} />}
-          {!loading && !error && filteredRecipes.length > 0 && (
+          {!loading && !error && totalRecipes > 0 && (
             <RecipeCards 
-              recipes={filteredRecipes}
+              recipes={pagedRecipes}
               onRecipeClick={handleRecipeClick}
               onToggleFavorite={toggleFavorite}
               isFavorite={isFavorite}
+            />
+          )}
+          {!loading && !error && totalRecipes > 0 && (
+            <Pagination
+              total={totalRecipes}
+              page={page}
+              pageSize={PAGE_SIZE}
+              onPageChange={setPage}
             />
           )}
           {!loading && !error && recipes.length > 0 && filteredRecipes.length === 0 && (
@@ -158,10 +185,19 @@ function App() {
         </>
       ) : (
         <Favorites 
-          favorites={favorites}
+          favorites={pagedFavorites}
           onRecipeClick={handleRecipeClick}
           onToggleFavorite={toggleFavorite}
           isFavorite={isFavorite}
+        />
+      )}
+
+      {showFavorites && totalFavorites > 0 && (
+        <Pagination
+          total={totalFavorites}
+          page={favPage}
+          pageSize={PAGE_SIZE}
+          onPageChange={setFavPage}
         />
       )}
 

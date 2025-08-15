@@ -1,0 +1,25 @@
+.pagination { width: min(1200px, 94%); margin: 12px auto 28px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--glass); box-shadow: var(--card-shadow); }
+.pagination-info { display: flex; gap: 14px; color: var(--muted); font-size: 14px; }
+.pagination-controls { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.page-btn { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; border: 1px solid var(--border); background: white; color: var(--text); }
+.page-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.page-numbers { display: flex; align-items: center; gap: 6px; }
+.page-num { min-width: 36px; height: 36px; padding: 0 10px; border-radius: 10px; border: 1px solid var(--border); background: white; color: var(--text); }
+.page-num.active { background: linear-gradient(90deg, var(--primary), var(--primary-2)); color: white; border-color: transparent; box-shadow: 0 6px 16px var(--glow); }
+.ellipsis { color: var(--muted); padding: 0 4px; }
+
+.app.dark-mode .pagination { background: rgba(255,255,255,0.06); }
+.app.dark-mode .page-btn, .app.dark-mode .page-num { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.95); border-color: rgba(255,255,255,0.18); }
+.app.dark-mode .page-num.active { background: linear-gradient(90deg, #0EC5A1, #40DFFF); color: white; box-shadow: 0 8px 22px rgba(64, 223, 255, 0.25); }
+
+/* Small screens: <= 440px */
+@media (max-width: 440px) {
+  .pagination { flex-direction: column; align-items: stretch; gap: 8px; padding: 8px; margin: 10px auto 20px; }
+  .pagination-info { justify-content: space-between; font-size: 12px; }
+  .pagination-controls { width: 100%; justify-content: space-between; gap: 6px; }
+  .page-numbers { flex: 1; display: flex; justify-content: center; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+  .page-numbers::-webkit-scrollbar { display: none; }
+  .page-btn { width: 32px; height: 32px; border-radius: 10px; }
+  .page-num { min-width: 30px; height: 30px; padding: 0 8px; border-radius: 8px; font-size: 12px; }
+  .ellipsis { display: none; }
+}
